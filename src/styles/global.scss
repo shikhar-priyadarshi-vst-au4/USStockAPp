@@ -1,0 +1,19 @@
+@import "_partials";
+
+@each $breakpoint, $scale in $font-sizes {
+    @each $size, $fs in $scale {
+  
+        @include bp($breakpoint) {
+          .fs--#{$size} {
+            font-size: nth($fs, 1);
+          }
+        }
+    }
+}
+
+
+// Generate margin utilities
+@include generate-spacing-utilities(margin, m);
+
+// Generate padding utilities
+@include generate-spacing-utilities(padding, p);

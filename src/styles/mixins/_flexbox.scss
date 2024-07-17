@@ -1,0 +1,107 @@
+$grid-columns: 12;
+$gutter-width: 30px;
+
+@mixin make-container {
+  width: 100%;
+  padding-right: ($gutter-width / 2);
+  padding-left: ($gutter-width / 2);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@mixin make-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: (-$gutter-width / 2);
+  margin-left: (-$gutter-width / 2);
+}
+
+@mixin make-col($size) {
+  position: relative;
+  width: 100%;
+  padding-right: ($gutter-width / 2);
+  padding-left: ($gutter-width / 2);
+  flex: 0 0 (100% / $grid-columns * $size);
+  max-width: (100% / $grid-columns * $size);
+}
+
+@mixin make-flex($justify: flex-start, $align: stretch, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+// Container
+.container {
+  @include make-container;
+}
+
+// Row
+.row {
+  @include make-row;
+}
+
+// Columns
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    @include make-col($i);
+  }
+}
+
+// Flexbox utilities
+.flex-row {
+  @include make-flex(row);
+}
+
+.flex-row-reverse {
+  @include make-flex(row-reverse);
+}
+
+.flex-column {
+  @include make-flex(column);
+}
+
+.flex-column-reverse {
+  @include make-flex(column-reverse);
+}
+
+.justify-content-start {
+  justify-content: flex-start;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.align-items-start {
+  align-items: flex-start;
+}
+
+.align-items-end {
+  align-items: flex-end;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-items-baseline {
+  align-items: baseline;
+}
+
+.align-items-stretch {
+  align-items: stretch;
+}

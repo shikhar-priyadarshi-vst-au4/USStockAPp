@@ -1,0 +1,38 @@
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: ($spacer * .25),
+  2: ($spacer * .5),
+  3: $spacer,
+  4: ($spacer * 1.5),
+  5: ($spacer * 3)
+);
+
+@mixin generate-spacing-utilities($property, $abbrev) {
+  @each $size, $value in $spacers {
+    .#{$abbrev}-#{$size} {
+      #{$property}: #{$value} !important;
+    }
+    .#{$abbrev}t-#{$size} {
+      #{$property}-top: #{$value} !important;
+    }
+    .#{$abbrev}r-#{$size} {
+      #{$property}-right: #{$value} !important;
+    }
+    .#{$abbrev}b-#{$size} {
+      #{$property}-bottom: #{$value} !important;
+    }
+    .#{$abbrev}l-#{$size} {
+      #{$property}-left: #{$value} !important;
+    }
+    .#{$abbrev}x-#{$size} {
+      #{$property}-left: #{$value} !important;
+      #{$property}-right: #{$value} !important;
+    }
+    .#{$abbrev}y-#{$size} {
+      #{$property}-top: #{$value} !important;
+      #{$property}-bottom: #{$value} !important;
+    }
+  }
+}
+

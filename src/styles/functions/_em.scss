@@ -1,0 +1,9 @@
+@use "sass:math";
+
+@function calc-em($target, $container){
+    @return math.div($target, $container) * 1em;
+}
+
+@function em($target, $container){
+    @return calc-em($target, $container);
+}
